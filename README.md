@@ -2,7 +2,7 @@
 
 **cishell** (**C**ommand **I**njection **Shell**) is a lightweight OS command injection exploitation tool.
 
-It emulates the look of an interactive shell with below features:
+It emulates an 'interactive'-like shell with below features:
  - Tab completion for remote directory/file name.
  - Navigate remote directory path with `cd` command.
  - Download/Upload file with `get`/`put` command.
@@ -12,7 +12,7 @@ It's intended to provide a more user-friendly environment to interact with remot
 
 Python version 2.7.x is required to run this program on Linux and Mac OS X.
 
-Please take a look at below projects if you are looking for more features:
+Please take a look at below projects for features not available in this tool:
  - [commix](https://github.com/commixproject/commix)
  - [weevely](https://github.com/epinna/weevely3)
  - [pyshell](https://github.com/praetorian-inc/pyshell)
@@ -22,11 +22,11 @@ To get a list of all options:
     
 `python cishell.py -h`
 
-**DVWA**
+Running against DVWA:
 
 `python cishell.py -u "http://x.x.x.x/dvwa/vulnerabilities/exec/index.php" -p "ip=%3bINJECT_HERE&submit=submit" -H "Cookie: security=low; PHPSESSID=66e655868605ee08d581fb5a2fbecd89"`
 
-**Mutillidae**
+Running against Mutillidae:
 
 `python cishell.py -u "http://x.x.x.x/mutillidae/index.php?page=dns-lookup.php" -p "target_host=127.0.0.1 | INJECT_HERE&dns-lookup-php-submit-button=Lookup+DNS"`
 
