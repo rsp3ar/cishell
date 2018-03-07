@@ -8,7 +8,7 @@ It emulates an 'interactive'-like shell with below features:
  - Download/Upload file with `get`/`put` command.
  - Navigate command history with arrow key (up/down).
 
-It's intended to provide a more user-friendly environment to interact with remote server via HTTP OS command injection in case interactive shell is not straightforward to obtain.
+It's intended to provide a user-friendly environment to interact with remote server via HTTP OS command injection in case interactive shell is not straightforward to obtain.
 
 Python version 2.7.x is required to run this program on Linux and Mac OS X.
 
