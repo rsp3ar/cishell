@@ -1,9 +1,8 @@
 # cishell
-=======
 
 **cishell** (**C**ommand **I**njection **Shell**) is a lightweight OS command injection exploitation tool.
 
-It emulates an interactive shell and has below features:
+It emulates the look of an interactive shell with below features:
  - Tab completion for remote directory/file name.
  - Navigate remote directory path with `cd` command.
  - Download/Upload file with `get`/`put` command.
@@ -20,15 +19,15 @@ Please take a look at below projects if you are looking for more features:
 
 ## Usage
 To get a list of all options:
-`python cishell.py -h`
+    python cishell.py -h
 
 **DVWA**
-`python cishell.py -u "http://x.x.x.x/dvwa/vulnerabilities/exec/index.php" -p "ip=%3bINJECT_HERE&submit=submit" -H "Cookie: security=low; PHPSESSID=66e655868605ee08d581fb5a2fbecd89"`
+    python cishell.py -u "http://x.x.x.x/dvwa/vulnerabilities/exec/index.php" -p "ip=%3bINJECT_HERE&submit=submit" -H "Cookie: security=low; PHPSESSID=66e655868605ee08d581fb5a2fbecd89"
 
 **Mutillidae**
-`python cishell.py -u "http://x.x.x.x/mutillidae/index.php?page=dns-lookup.php" -p "target_host=127.0.0.1 | INJECT_HERE&dns-lookup-php-submit-button=Lookup+DNS"`
+    python cishell.py -u "http://x.x.x.x/mutillidae/index.php?page=dns-lookup.php" -p "target_host=127.0.0.1 | INJECT_HERE&dns-lookup-php-submit-button=Lookup+DNS"
 
-![screencast](cishell-usage.webm)
+![screencast](cishell.gif)
 
 ## Known Issues
  - Mac OS X ships with libedit instead of GNU readline and may cause issue with command history navigation.
