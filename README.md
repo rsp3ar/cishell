@@ -1,6 +1,6 @@
-# cishell
+# CIShell 
 
-**cishell** (**C**ommand **I**njection **Shell**) is a lightweight OS command injection exploitation tool.
+**CIShell** (**C**ommand **I**njection **Shell**) is a lightweight OS command injection exploitation tool.
 
 It emulates an 'interactive'-like shell with below features:
  - Tab completion for remote directory/file name.
