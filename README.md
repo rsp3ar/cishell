@@ -32,5 +32,13 @@ Running against Mutillidae:
 
 ![screencast](cishell.gif)
 
+To download remote file to local current directory in shell:
+
+`get remote_file`
+
+To upload local file to remote current directory in shell:
+
+`put local_file`
+
 ## Known Issues
  - Mac OS X ships with libedit instead of GNU readline and may cause issue with command history navigation.

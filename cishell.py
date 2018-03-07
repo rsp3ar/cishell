@@ -72,27 +72,31 @@ def execute_command(cmd, current_dir = None):
 
 def download_file(remote_filename):
     content = execute_command("cat %s 2>&1 | base64" % (remote_filename))
-    open(remote_filename, "wb").write(base64.b64decode(content))
+    local_filename = os.path.basename(remote_filename)
+    open(local_filename, "wb").write(base64.b64decode(content))
 
 
 def upload_file(filename):
     try:
         f = open(filename, "rb")
+        remote_filename = os.path.basename(filename)
         # Create remote file and check if there permission issue
-        output = execute_command("bash -c ':>%s'" % (filename))
+        output = execute_command("bash -c ':>%s'" % (remote_filename))
         if output.strip() != "":
             raise Exception(output.strip())
         file_size = os.fstat(f.fileno()).st_size
-        chunk_count = file_size / UPLOAD_CHUNK_SIZE + 1
+        chunk_count = int(file_size / UPLOAD_CHUNK_SIZE)
+        if file_size % UPLOAD_CHUNK_SIZE != 0:
+            chunk_count += 1
         index = 1
         while True:
-            sys.stdout.write("\r[*] Upload file %s chunk [%d/%d]" % (filename, index, chunk_count))
-            sys.stdout.flush()
             chunk = f.read(UPLOAD_CHUNK_SIZE)
             if not chunk:
                 break
+            sys.stdout.write("\r[*] Upload file %s chunk [%d/%d]" % (remote_filename, index, chunk_count))
+            sys.stdout.flush()
             chunk = base64.b64encode(chunk)
-            execute_command("printf %s | base64 -d >>%s" % (chunk, filename))
+            execute_command("printf %s | base64 -d >>%s" % (chunk, remote_filename))
             index += 1
         f.close()
         print("\n")
